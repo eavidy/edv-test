@@ -1,0 +1,18 @@
+name: Publish Npm Package beta
+on:
+    pull_request_target:
+        types:
+            - closed
+        branches:
+            - release
+
+jobs:
+    build:
+        if: github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/workflows/unit-test.yaml
+            - name: Publish Npm package
+              run: pnpm publish --tag beta
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
