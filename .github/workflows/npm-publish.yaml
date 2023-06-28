@@ -1,18 +1,22 @@
 name: Publish Npm Package
 on:
-    pull_request_target:
-        types:
-            - closed
-        branches:
-            - main
+    workflow_dispatch:
+        inputs:
+            tags:
+                description: 发布标签
+                required: false
+                type: boolean
 
 jobs:
-    build:
+    beta:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
-            - uses: ./.github/workflows/unit-test.yaml
             - name: Publish Npm package
-              run: pnpm publish --tag rc --publish-branch release
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+              run: echo ${{ secrets.NPM_TOKEN }}
+    release:
+        if: github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+        steps:
+            - name: Publish Npm package
+              run: echo fin
