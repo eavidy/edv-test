@@ -12,5 +12,9 @@ jobs:
             - uses: actions/checkout@v3
               with:
                   ref: ${{ github.ref }}
-            - name: Publish Npm package
+            - name: 查看分支
+              run: git branch
+
+            - uses: actions/checkout@v3
+            - name: 查看分支
               run: git branch
