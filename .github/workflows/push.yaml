@@ -1,0 +1,33 @@
+name: Unit test
+on:
+    push:
+        branches:
+            - release
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use pnpm 8
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - name: Use Node.js v20
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  cache: "pnpm"
+            - name: Install dependencies
+              run: pnpm install
+            - name: build
+              run: pnpm build
+            - name: Unit test
+              run: pnpm test
+            - name: Upload dist
+              uses: actions/upload-artifact@v3
+              with:
+                  days: 7
+                  name: out
+                  path: |
+                      out
+                      !out/**/*.test.js

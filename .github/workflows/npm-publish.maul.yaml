@@ -1,0 +1,35 @@
+name: manual
+on:
+    workflow_dispatch:
+        inputs:
+            tags:
+                description: beta or release
+                required: false
+                type: boolean
+
+jobs:
+    beta:
+        if: ${{ inputs.tags }}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use pnpm 8
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - name: Use Node.js v20
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  cache: "pnpm"
+            - uses: actions/download-artifact@v3
+              with:
+                  name: out
+            - name: Publish Npm package
+              run: pnpm publish --tag beta
+    release:
+        if: ${{ !inputs.tags }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Publish Npm package
+              run: pnpm publish
