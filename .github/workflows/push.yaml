@@ -6,7 +6,6 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: ./.github/workflows/unit-test.yaml
             - name: Publish Npm package
 
               run: echo ${{ secrets.NPM_TOKEN }}
