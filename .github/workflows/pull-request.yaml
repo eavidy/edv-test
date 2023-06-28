@@ -10,8 +10,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-              with:
-                  ref: ${{ github.ref }}
             - name: 查看分支
               run: git branch
 
