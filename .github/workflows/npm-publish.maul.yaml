@@ -15,7 +15,7 @@ jobs:
             - name: Publish Npm package
               run: echo ${{ secrets.NPM_TOKEN }}
     release:
-        if: ${{ inputs.tags }}
+        if: ${{ !inputs.tags }}
         runs-on: ubuntu-latest
         steps:
             - name: Publish Npm package
