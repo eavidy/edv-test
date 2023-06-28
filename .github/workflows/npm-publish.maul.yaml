@@ -9,13 +9,13 @@ on:
 
 jobs:
     beta:
-        if: ${{ inputs.tags }} == true
+        if: ${{ inputs.tags }}
         runs-on: ubuntu-latest
         steps:
             - name: Publish Npm package
               run: echo ${{ secrets.NPM_TOKEN }}
     release:
-        if: ${{ inputs.tags }} == false
+        if: ${{ inputs.tags }}
         runs-on: ubuntu-latest
         steps:
             - name: Publish Npm package
