@@ -20,6 +20,6 @@ jobs:
             - name: build
               run: pnpm build
             - name: publish
-              run: pnpm publish --tag ${{ inputs.tags }}
+              run: npm publish --tag ${{ inputs.tags }}
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
