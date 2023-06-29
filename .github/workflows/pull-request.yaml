@@ -20,13 +20,3 @@ jobs:
               run: pnpm build
             - name: Unit test
               run: pnpm test
-            - name: Upload dist
-              uses: actions/upload-artifact@v3
-              with:
-                  retention-days: 7
-                  name: out
-                  path: |
-                      **/**
-                      !node_modules
-                      !.github
-                      !.git
