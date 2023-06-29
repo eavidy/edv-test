@@ -1,0 +1,33 @@
+name: manual publish
+on:
+    workflow_dispatch:
+        inputs:
+            tags:
+                description: beta or release
+                required: false
+                type: boolean
+
+jobs:
+    beta:
+        if: ${{ inputs.tags }}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: asnow-c/template@v1
+              with:
+                  nodev: 20
+                  pnpmv: 8
+            - run: ls
+            - uses: actions/download-artifact@v3
+              with:
+                  name: out
+            - run: ls
+            # - name: Publish Npm package
+            #   run: pnpm publish --tag beta
+            #   env:
+            #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    release:
+        if: ${{ !inputs.tags }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Publish Npm package
+              run: pnpm publish

@@ -1,0 +1,32 @@
+name: pull request
+on:
+    # pull_request:
+    #     types:
+    #         - opened
+    #         - reopened
+    #     branches:
+    #         - release
+    push:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: asnow-c/template@v1
+              with:
+                  nodev: 20
+                  pnpmv: 8
+                  run_install: true
+            - name: build
+              run: pnpm build
+            - name: Unit test
+              run: pnpm test
+            - name: Upload dist
+              uses: actions/upload-artifact@v3
+              with:
+                  retention-days: 7
+                  name: out
+                  path: |
+                      **/**
+                      !node_modules
+                      !.github
+                      !.git
