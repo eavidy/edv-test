@@ -1,5 +1,5 @@
 import { it, expect } from "vitest";
-
+import { a } from "./main.js";
 it("test1", function () {
-    expect(2 + 1).toBe(3);
+    expect(a).toBe(9);
 });
