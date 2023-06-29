@@ -1,1 +1,1 @@
-console.log("fin");
+export const a = 9;
