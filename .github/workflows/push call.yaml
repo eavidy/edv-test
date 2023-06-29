@@ -1,0 +1,11 @@
+name: manual
+on:
+    push:
+
+jobs:
+    beta:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ./.github/workflows/callable.yml
+            - run: echo ok
+              name: "echo"
