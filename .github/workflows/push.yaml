@@ -1,17 +1,24 @@
 name: pull request
 on:
-    pull_request:
-        types:
-            - opened
-            - reopened
+    push:
 jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: asnow-c/template@v1
+              with:
+                  nodev: 20
+                  pnpmv: 8
+                  run_install: true
+            - name: build
+              run: pnpm build
+            - name: Unit test
+              run: pnpm test
     context:
         runs-on: ubuntu-latest
         steps:
             - name: github.action_ref
               run: echo ${{github.action_ref}}
-            - name: github.base_ref
-              run: echo ${{github.base_ref}}
             - name: github.event_name
               run: echo ${{github.event_name}}
             - name: github.event_path
