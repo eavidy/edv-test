@@ -1,0 +1,27 @@
+{
+    "name": "@asnc/ci-test",
+    "version": "0.0.7",
+    "description": "",
+    "main": "./out/main.js",
+    "type": "module",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org"
+    },
+    "files": [
+        "out/**"
+    ],
+    "scripts": {
+        "test": "vitest",
+        "build": "tsc",
+        "run": "node dist/main.js",
+        "publishTest": "pnpm publish --no-git-checks --dry-run"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "typescript": "^5.1.5",
+        "vitest": "^0.32.2"
+    }
+}
