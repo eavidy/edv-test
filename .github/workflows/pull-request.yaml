@@ -25,4 +25,4 @@ jobs:
             - name: check
               run: pwd && ls
             - name: node
-              run: node src/mian.js
+              run: node src/main.js
