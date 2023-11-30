@@ -22,5 +22,7 @@ jobs:
         steps:
             - name: prepare
               uses: actions/checkout@v3
+            - name: check
+              run: pwd && ls
             - name: node
               run: node src/mian.js
