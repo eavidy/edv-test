@@ -10,19 +10,10 @@ jobs:
         steps:
             - name: prepare
               uses: actions/checkout@v3
+            - name: package
+              run: tar -cvf up.tar src/*
             - name: upload
               uses: actions/upload-artifact@v3
               with:
                   name: ${{env.ARTIFACT_NAME}}
-                  path: |
-                      src
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - name: prepare
-              uses: actions/checkout@v3
-            - name: check
-              run: pwd && ls
-            - name: node
-              run: node src/main.js
+                  path: up.tar
