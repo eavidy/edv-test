@@ -5,6 +5,16 @@ permissions:
   contents: write
   actions: write
   statuses: write
+  checks: write
+  deployments: write
+  discussions: write
+  id-token: write
+  issues: write
+  packages: write
+  pages: write
+  pull-requests: write
+  repository-projects: write
+  security-events: write
 jobs:
   build:
     runs-on: ubuntu-latest
