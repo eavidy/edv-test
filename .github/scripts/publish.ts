@@ -10,4 +10,9 @@ await publishFlow(["v0.3.1", "v0.3.2"], { tagFailThrow: true }).catch((e) => {
 });
 
 const repo = new GitHubRepo();
-await repo.deleteMatchVersionTag(new Set(["v0.2.9"]), "0.2.10", "patch");
+const res = await repo.deleteMatchVersionTag(
+  new Set(["v0.2.9"]),
+  "0.2.10",
+  "patch",
+);
+console.log(res);
