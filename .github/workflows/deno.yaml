@@ -1,16 +1,24 @@
-name: pull request
+name: CI
 on:
-    push:
+  push:
+permissions:
+  contents: write
+  actions: write
+  statuses: write
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Prepare
-              uses: actions/checkout@v3
-            - name: Setup-deno
-              uses: denoland/setup-deno@v1
-              with:
-                  deno-version: v1.x
-            - name: Run
-              run: deno run -A ./.github/scripts/deno-test.ts
+    steps:
+      - name: Prepare
+        uses: actions/checkout@v3
+      - name: Setup-deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: Run
+        run: |
+          echo ::group::Deno cache
+          deno run -A ./.github/scripts/publish.ts
+        env:
+          GITHUB_TOKEN: ${{secrets.CI_GITHBU_TOKEN}}

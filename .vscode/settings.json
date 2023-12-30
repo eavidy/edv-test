@@ -1,3 +1,9 @@
 {
-    "deno.enablePaths": [".github/scripts"]
+  "deno.enablePaths": [".github/scripts"],
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  }
 }
