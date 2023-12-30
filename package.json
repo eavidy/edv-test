@@ -1,6 +1,6 @@
 {
     "name": "@asnc/ci-test",
-    "version": "0.2.9",
+    "version": "0.2.10",
     "description": "",
     "main": "./out/main.js",
     "type": "module",
@@ -23,5 +23,8 @@
     "devDependencies": {
         "typescript": "^5.1.5",
         "vitest": "^0.32.2"
+    },
+    "dependencies": {
+        "@actions/artifact": "^2.0.0"
     }
 }
