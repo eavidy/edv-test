@@ -34,3 +34,4 @@ jobs:
         with:
           path: list.json
           name: dist-c
+          root: .github
