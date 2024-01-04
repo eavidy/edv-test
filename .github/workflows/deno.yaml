@@ -42,7 +42,7 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - name: Checkout
+      - name: Script
         uses: asnowc/actions@deno-script/v1
         with:
           script: |
