@@ -56,7 +56,7 @@ jobs:
             await writeNewTagToOutput(Math.random().toString(), "NEW_TAG");
       - name: A
         run: |
-          echo ${{steps.cc2.outputs.YY}}
+          echo ${{env.outputs.RES}}
           echo ${{steps.cc2.outputs.RES}}
 
       - name: B
