@@ -46,5 +46,13 @@ jobs:
         uses: asnowc/actions@deno-script/v1
         with:
           script: |
-            import { notice } from "npm:@actions/core";
-            notice("ok");
+            import { writeNewTagToOutput } from "https://cdn.jsdelivr.net/gh/dnpack/action-script@0.3.0/cmd/github_repo.ts";
+            await writeNewTagToOutput(Math.random().toString(), "NEW_TAG");
+        id: check_tag
+      - name: A
+        if: ${{!steps.check_tag.outputs.NEW_TAG}}
+        run: echo ${{steps.check_tag.outputs.NEW_TAG}}
+
+      - name: B
+        if: ${{steps.check_tag.outputs.NEW_TAG}}
+        run: echo ${{steps.check_tag.outputs.NEW_TAG}}
