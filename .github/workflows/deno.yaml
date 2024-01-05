@@ -59,7 +59,7 @@ jobs:
           echo $TAG
           echo ${{steps.check_tag.outputs.NEW_TAG}}
         env:
-          TAG: ${{steps.check_tag.outputs.NEW_TAG}}
+          TAG: ${{steps.check_tag.outputs.YY}}
 
       - name: B
         if: ${{steps.check_tag.outputs.NEW_TAG}}
