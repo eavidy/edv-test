@@ -50,8 +50,7 @@ jobs:
           script: |
             import { setOutput } from "npm:@actions/core";
             import { writeNewTagToOutput } from "https://cdn.jsdelivr.net/gh/dnpack/action-script@0.3.0/cmd/github_repo.ts";
-            setOutput("RES", "111");
-            setOutput("script_output", "222");
+            writeNewTagToOutput("v13.4", "RES");
       - name: A
         if: ${{!steps.cc2.outputs.script_output}}
         run: echo ${{steps.cc2.outputs.script_output}}
