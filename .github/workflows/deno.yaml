@@ -54,9 +54,9 @@ jobs:
             import { writeNewTagToOutput } from "https://cdn.jsdelivr.net/gh/dnpack/action-script@0.3.0/cmd/github_repo.ts";
             await writeNewTagToOutput(Math.random().toString(), "RES");
       - name: A
-        run: |
-          echo ${{steps.cc2.outputs.RES}}
+        if: ${{!steps.cc2.outputs.RES}}
+        run: echo ${{steps.cc2.outputs.RES}}
 
       - name: B
-        if: ${{steps.check_tag.outputs.YY}}
+        if: ${{steps.cc2.outputs.RES}}
         run: echo ${{steps.cc2.outputs.NEW_TAG}}
