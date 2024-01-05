@@ -38,8 +38,6 @@ jobs:
   script:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
@@ -52,7 +50,8 @@ jobs:
           script: |
             import { setOutput } from "npm:@actions/core";
             import { writeNewTagToOutput } from "https://cdn.jsdelivr.net/gh/dnpack/action-script@0.3.0/cmd/github_repo.ts";
-            await writeNewTagToOutput(Math.random().toString(), "RES");
+            setOutput("RES", "111");
+            setOutput("script_output", "111");
       - name: A
         if: ${{!steps.cc2.outputs.script_output}}
         run: echo ${{steps.cc2.outputs.script_output}}
