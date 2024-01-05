@@ -1,4 +1,3 @@
-import * as action from "npm:@actions/core";
-console.log("::endgroup::");
 
-action.setOutput("NEED_UPDATE", "OK");
+import { writeNewTagToOutput } from "https://cdn.jsdelivr.net/gh/dnpack/action-script@0.3.0/cmd/github_repo.ts";
+await writeNewTagToOutput(Math.random().toString(), "NEW_TAG");
