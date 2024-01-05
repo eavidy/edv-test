@@ -52,11 +52,9 @@ jobs:
           script: |
             import { setOutput } from "npm:@actions/core";
             import { writeNewTagToOutput } from "https://cdn.jsdelivr.net/gh/dnpack/action-script@0.3.0/cmd/github_repo.ts";
-            setOutput("YY", "BB");
-            await writeNewTagToOutput(Math.random().toString(), "NEW_TAG");
+            await writeNewTagToOutput(Math.random().toString(), "RES");
       - name: A
         run: |
-          echo ${{env.outputs.RES}}
           echo ${{steps.cc2.outputs.RES}}
 
       - name: B
