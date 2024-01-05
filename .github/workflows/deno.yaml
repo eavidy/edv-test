@@ -59,7 +59,7 @@ jobs:
             setOutput("YY", "BB");
             await writeNewTagToOutput(Math.random().toString(), "NEW_TAG");
       - name: A
-        if: ${{!steps.check_tag.outputs.NEW_TAG}}
+        if: ${{!steps.check_tag.outputs.YY}}
         run: |
           echo ${{steps.cc2.outputs.YY}}
           echo $TAG
@@ -68,5 +68,5 @@ jobs:
           TAG: ${{steps.cc2.outputs.YY}}
 
       - name: B
-        if: ${{steps.check_tag.outputs.NEW_TAG}}
-        run: echo ${{steps.check_tag.outputs.NEW_TAG}}
+        if: ${{steps.check_tag.outputs.YY}}
+        run: echo ${{steps.cc2.outputs.NEW_TAG}}
