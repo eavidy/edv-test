@@ -1,19 +1,22 @@
 name: pull request
 on:
-    workflow_call:
+  push:
+    branches:
+      - main
 env:
-    ARTIFACT_NAME: dist_${{github.ref_name}}
+  ARTIFACT_NAME: dist_${{github.ref_name}}
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: prepare
-              uses: actions/checkout@v3
-            - name: package
-              run: tar -cvf up.tar src/*
-            - name: upload
-              uses: actions/upload-artifact@v3
-              with:
-                  name: ${{env.ARTIFACT_NAME}}
-                  path: up.tar
+    steps:
+      - name: prepare
+        uses: actions/checkout@v3
+      - name: package
+        run: tar -cvf up.tar src/*
+      - name: upload
+        id: check-tag
+        uses: asnowc/actions@check-tags/v1
+        with:
+          file: package.json
+      - run: echo ${{steps.check-tag.outputs.tags}}
