@@ -3,20 +3,12 @@ on:
   push:
     branches:
       - main
-env:
-  ARTIFACT_NAME: dist_${{github.ref_name}}
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: prepare
-        uses: actions/checkout@v3
+        run: exit 1
       - name: package
-        run: tar -cvf up.tar src/*
-      - name: upload
-        id: check-tag
-        uses: asnowc/actions@check-tags/v1
-        with:
-          file: package.json
-      - run: echo ${{steps.check-tag.outputs.tags}}
+        run: echo ok
