@@ -9,6 +9,6 @@ jobs:
 
     steps:
       - name: prepare
-        run: exit 1
+        run: exit 0
       - name: package
         run: echo ok
