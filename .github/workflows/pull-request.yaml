@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: prepare
-        run: exit 0
-      - name: package
-        run: echo ok
+      - name: Package npm
+        run: |
+          echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
+          cat ./package.json >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+          npm pack
+          echo ${{fromJson(env.PACKAGE_JSON).version}}
