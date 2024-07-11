@@ -17,5 +17,4 @@ jobs:
             cat ./package.json
             echo EOF
           } >>  $GITHUB_ENV
-      - name: echo
-        run: echo ${{fromJson(env.PACKAGE_JSON).version}}
+          echo ${{fromJson(env.PACKAGE_JSON).version}}
