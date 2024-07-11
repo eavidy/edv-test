@@ -12,9 +12,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Package npm
         run: |
-          {
-            echo 'PACKAGE_JSON<<EOF' 
-            cat ./package.json
-            echo EOF
-          } >>  $GITHUB_ENV
-          echo ${{fromJson(env.PACKAGE_JSON).version}}
+          echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
+          cat ./package.json >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+          echo ok
