@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Package npm
         run: |
-          echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
-          cat ./package.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV 
-          echo cpcall-${{fromJson(env.PACKAGE_JSON).version}}.tgz
+          tmp=`cat ./package.json`
+          echo tmp
+          echo cpcall-${{fromJson(env.tmp).version}}.tgz
