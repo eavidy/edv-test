@@ -10,8 +10,10 @@ jobs:
     steps:
       - name: Package npm
         run: |
-          echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
-          cat ./package.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
-          npm pack
-          echo ${{fromJson(env.PACKAGE_JSON).version}}
+          {
+            echo 'PACKAGE_JSON<<EOF' 
+            cat ./package.json
+            echo EOF
+          } >>  $GITHUB_ENV
+      - name: echo
+        run: echo ${{fromJson(env.PACKAGE_JSON).version}}
