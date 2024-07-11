@@ -14,5 +14,5 @@ jobs:
         run: |
           echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
           cat ./package.json >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
-          echo ok
+          echo 'EOF' >> $GITHUB_ENV 
+          echo cpcall-${{fromJson(env.PACKAGE_JSON).version}}.tgz
