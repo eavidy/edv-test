@@ -12,6 +12,4 @@ jobs:
         uses: actions/checkout@v4
       - name: Package npm
         run: |
-          tmp=`cat ./package.json`
-          echo tmp
-          echo cpcall-${{fromJson(env.tmp).version}}.tgz
+          npx jsr publish --dry-run
