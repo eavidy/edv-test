@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Package npm
-        run: |
-          npx jsr publish --dry-run
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+      - name: npx
+        continue-on-error: true
+        run: npx jsr publish --dry-run
+      - name: deno
+        run: deno publish --dry-run
