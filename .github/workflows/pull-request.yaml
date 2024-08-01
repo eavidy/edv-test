@@ -1,28 +1,13 @@
 name: pull request
 on:
-  push:
+  pull_request:
+    types:
+      - opened
 jobs:
-  case1:
+  test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: npx
-        continue-on-error: true
-        run: npx jsr publish --dry-run
-
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-      - name: deno
-        run: deno publish --dry-run
-
-  case2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-      - name: deno
-        run: deno publish --dry-run
+      - run: ls
